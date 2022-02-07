@@ -26,18 +26,29 @@ public class Track {
     }
 
     public double getDistance(){
-        double result = 0;
-        return result;
+        double sum=0;
+        for (int i=1; i<trackPoints.size();i++) {
+            sum+=trackPoints.get(i-1).getDistanceFrom(trackPoints.get(i));
+        }
+        return sum*2;
     }
 
     public double getFullDecrease(){
-        double result = 0;
-        return result;
+        double sum=0;
+        for (int i=1; i<trackPoints.size();i++) {
+            if ((trackPoints.get(i).getElevation()-trackPoints.get(i-1).getElevation())<0)
+                sum-=trackPoints.get(i-1).getElevation()+trackPoints.get(i).getElevation();
+        }
+        return -sum;
     }
 
     public double getFullElevation(){
-        double result = 0;
-        return result;
+        double sum=0;
+        for (int i=1; i<trackPoints.size();i++) {
+            if ((trackPoints.get(i).getElevation()-trackPoints.get(i-1).getElevation())>0)
+            sum+=trackPoints.get(i).getElevation()-trackPoints.get(i-1).getElevation();
+        }
+        return sum;
     }
 
     public double getRectangleArea(){

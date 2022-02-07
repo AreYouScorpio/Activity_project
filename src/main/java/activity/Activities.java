@@ -1,6 +1,7 @@
 package activity;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Activities {
@@ -22,7 +23,8 @@ public class Activities {
     }
 
     public List<Report> distancesByTypes(){
-    return null;
+      return activities.stream()
+            .map(a -> new Report(a.getType(), a.getDistance())).toList();
     }
 
     public int numberOfTrackActivities(){
