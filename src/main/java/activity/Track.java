@@ -26,11 +26,15 @@ public class Track {
     }
 
     public double getDistance(){
+
         double sum=0;
         for (int i=1; i<trackPoints.size();i++) {
             sum+=trackPoints.get(i-1).getDistanceFrom(trackPoints.get(i));
-        }
-        return sum*2;
+
+            System.out.println(sum);
+        //System.out.println(trackPoints.get(trackPoints.size()-2).getDistanceFrom(trackPoints.get(trackPoints.size()-1)));
+    }
+        return sum;
     }
 
     public double getFullDecrease(){
