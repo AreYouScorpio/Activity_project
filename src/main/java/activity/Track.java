@@ -1,13 +1,17 @@
 package activity;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Track {
 
     private List<TrackPoint> trackPoints = new ArrayList<>();
 
-    public void addTrackpoint(TrackPoint tp){
+
+
+    public void addTrackPoint(TrackPoint tp){
         trackPoints.add(tp);
     }
 
@@ -44,4 +48,14 @@ public class Track {
     public List<TrackPoint> getTrackPoints() {
         return trackPoints;
     }
+
+    public void loadFromGpx(InputStream is){
+        Scanner scanner = new Scanner(is);
+        while (scanner.hasNext()){
+            System.out.println(scanner.nextLine());
+        }
+
+    }
+
+
 }

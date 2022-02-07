@@ -6,12 +6,13 @@ public class Activities {
 
     private List<Activity> activities;
 
+
     public Activities(List<Activity> activities) {
         this.activities = activities;
     }
 
-    public void addActivity(Activity) {
-        activities.add(Activity);
+    public void addActivity(Activity a) {
+        activities.add(a);
     }
 
     public List<Report> distancesByTypes(){
