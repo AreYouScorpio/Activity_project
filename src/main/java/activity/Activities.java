@@ -23,16 +23,24 @@ public class Activities {
     }
 
     public List<Report> distancesByTypes(){
-      return activities.stream()
-            .map(a -> new Report(a.getType(), a.getDistance())).toList();
+        List<Report> result=new ArrayList<>();
+        for(ActivityType at : ActivityType.values())
+        {
+            result.add(new Report(at,activities.stream().filter(a->a.getType()==at).mapToDouble(a->a.getDistance()).sum()));
+        }
+        return result;
+
+      //return activities.stream().map(a -> new Report(a.getType(), a.getDistance())).toList();
+
     }
 
     public int numberOfTrackActivities(){
-    return (int)activities.stream().filter(a->a.getType()!=null).count();
-
+    return (int)activities.stream().filter(a->a instanceof ActivityWithTrack).count();
     }
+
+
     public int numberOfWithoutTrackActivities(){
-    return (int)activities.stream().filter(a->a.getType()==null).count();
+    return (int)activities.stream().filter(a->a instanceof ActivityWithoutTrack).count();
 
     }
 

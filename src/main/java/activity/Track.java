@@ -28,6 +28,7 @@ public class Track {
     public double getDistance(){
 
         double sum=0;
+        if (trackPoints.size()==0) return 0;
         for (int i=1; i<trackPoints.size();i++) {
             sum+=trackPoints.get(i-1).getDistanceFrom(trackPoints.get(i));
 

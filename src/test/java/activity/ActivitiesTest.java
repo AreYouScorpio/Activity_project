@@ -40,16 +40,14 @@ public class ActivitiesTest {
         List<Report> result = activities.distancesByTypes();
 
         assertEquals(0.0, result.get(1).getDistance());
-        System.out.println(result.get(1).getDistance());
 
         assertEquals(0.0, result.get(0).getDistance());
-        System.out.println(result.get(0).getDistance());
 
 
         assertEquals(ActivityType.RUNNING, result.get(2).getActivityType());
         assertEquals(27223158, result.get(2).getDistance(), 5);
 
-        //assertEquals(ActivityType.BASKETBALL, result.get(3).getActivityType());
+        assertEquals(ActivityType.BASKETBALL, result.get(3).getActivityType());
     }
 
 }
