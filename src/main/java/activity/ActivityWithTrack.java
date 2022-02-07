@@ -12,11 +12,11 @@ public class ActivityWithTrack implements Activity {
 
     @Override
     public double getDistance() {
-        return 0;
+        return getDistance();
     }
 
     @Override
     public ActivityType getType() {
-        return null;
+        return activityType;
     }
 }
