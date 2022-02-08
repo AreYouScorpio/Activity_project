@@ -77,16 +77,23 @@ public class Track {
             Scanner scanner = new Scanner(is);
             while (scanner.hasNext()) {
                 String[] temp = scanner.nextLine().split("<trkpt lat=\"");
+                //if (t.contains("<ele>")) {tempElev = t.split("<ele>");}
+
                 if (temp.length > 1) {
                     String[] temp2 = temp[1].split("\" lon=\"");
 
                     String latTemp = temp2[0];
                     String lonTemp = temp2[1].substring(0, 10);
-                    TrackPoint newTP=new TrackPoint(new Coordinate(Integer.getInteger(latTemp),
-                           Integer.getInteger(lonTemp)), 2);
+                    System.out.println(latTemp + "  " + lonTemp + " " ); //+ tempElev[1].substring(0,5));
+                    Coordinate newCoord = new Coordinate(Double.parseDouble(latTemp),
+                            Double.parseDouble(lonTemp));
+                    TrackPoint newTP = new TrackPoint(newCoord, 2); // Double.parseDouble(tempElev[1].substring(0,5)));
+                    System.out.println(newCoord);
                     System.out.println(newTP);
                     trackPoints.add(newTP);
+
                 }
+
             }
 
         }
