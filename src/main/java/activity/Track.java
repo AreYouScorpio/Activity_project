@@ -76,18 +76,19 @@ public class Track {
     public void loadFromGpx(InputStream is) {
             Scanner scanner = new Scanner(is);
             while (scanner.hasNext()) {
-                String[] temp = scanner.nextLine().split("<trkpt lat=\"");
-                //if (t.contains("<ele>")) {tempElev = t.split("<ele>");}
+                String t = scanner.nextLine();
+                String[] tempElev;
+                String[] temp = t.split("<trkpt lat=\"");
 
                 if (temp.length > 1) {
                     String[] temp2 = temp[1].split("\" lon=\"");
-
+                    tempElev = scanner.nextLine().split("<ele>");
                     String latTemp = temp2[0];
                     String lonTemp = temp2[1].substring(0, 10);
-                    System.out.println(latTemp + "  " + lonTemp + " " ); //+ tempElev[1].substring(0,5));
+                    System.out.println(latTemp + "  " + lonTemp + " " + tempElev[1].substring(0,5));
                     Coordinate newCoord = new Coordinate(Double.parseDouble(latTemp),
                             Double.parseDouble(lonTemp));
-                    TrackPoint newTP = new TrackPoint(newCoord, 2); // Double.parseDouble(tempElev[1].substring(0,5)));
+                    TrackPoint newTP = new TrackPoint(newCoord, Double.parseDouble(tempElev[1].substring(0,5)));
                     System.out.println(newCoord);
                     System.out.println(newTP);
                     trackPoints.add(newTP);
