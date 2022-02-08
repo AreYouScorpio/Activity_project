@@ -71,6 +71,7 @@ public class Track {
         return trackPoints;
     }
 
+
     public void loadFromGpx(InputStream is){
         Scanner scanner = new Scanner(is);
         while (scanner.hasNext()){
