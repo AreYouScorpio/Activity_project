@@ -59,8 +59,12 @@ public class Track {
     }
 
     public double getRectangleArea(){
-        double result = 0;
-        return result;
+        double minLongitude = trackPoints.stream().mapToDouble(a-> a.getCoordinate().getLongitude()).min().getAsDouble();
+        double minLatitude = trackPoints.stream().mapToDouble(a-> a.getCoordinate().getLatitude()).min().getAsDouble();
+        double maxLongitude = trackPoints.stream().mapToDouble(a-> a.getCoordinate().getLongitude()).max().getAsDouble();
+        double maxLatitude = trackPoints.stream().mapToDouble(a-> a.getCoordinate().getLatitude()).max().getAsDouble();
+
+        return Math.abs(maxLatitude-minLatitude)*Math.abs(maxLongitude-minLongitude);
     }
 
     public List<TrackPoint> getTrackPoints() {
