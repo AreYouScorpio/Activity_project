@@ -16,13 +16,15 @@ public class Track {
     }
 
     public Coordinate findMaximumCoordinate(){
-        Coordinate result = null;
-        return result;
+        double maxLongitude = trackPoints.stream().mapToDouble(a-> a.getCoordinate().getLongitude()).max().getAsDouble();
+        double maxLatitude = trackPoints.stream().mapToDouble(a-> a.getCoordinate().getLatitude()).max().getAsDouble();
+        return new Coordinate(maxLatitude, maxLongitude);
     }
 
     public Coordinate findMinimumCoordinate(){
-        Coordinate result = null;
-        return result;
+        double minLongitude = trackPoints.stream().mapToDouble(a-> a.getCoordinate().getLongitude()).min().getAsDouble();
+        double minLatitude = trackPoints.stream().mapToDouble(a-> a.getCoordinate().getLatitude()).min().getAsDouble();
+        return new Coordinate(minLatitude, minLongitude);
     }
 
     public double getDistance(){
