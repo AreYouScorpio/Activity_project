@@ -1,5 +1,6 @@
 package activity;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,13 +73,25 @@ public class Track {
     }
 
 
-    public void loadFromGpx(InputStream is){
-        Scanner scanner = new Scanner(is);
-        while (scanner.hasNext()){
-            System.out.println(scanner.nextLine());
+    public void loadFromGpx(InputStream is) {
+            Scanner scanner = new Scanner(is);
+            while (scanner.hasNext()) {
+                String[] temp = scanner.nextLine().split("<trkpt lat=\"");
+                if (temp.length > 1) {
+                    String[] temp2 = temp[1].split("\" lon=\"");
+
+                    String latTemp = temp2[0];
+                    String lonTemp = temp2[1].substring(0, 10);
+                    TrackPoint newTP=new TrackPoint(new Coordinate(Integer.getInteger(latTemp),
+                           Integer.getInteger(lonTemp)), 2);
+                    System.out.println(newTP);
+                    trackPoints.add(newTP);
+                }
+            }
+
         }
 
     }
 
 
-}
+
